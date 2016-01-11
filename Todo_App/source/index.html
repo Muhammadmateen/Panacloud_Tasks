@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" type="text/css" href="../node_modules/angular-material/angular-material.css">
+    <link rel="stylesheet" type="text/css" href="../node_modules/angular-material-icons/angular-material-icons.css">
+
+
+    <script src="../node_modules/angular/angular.js"></script>
+    <script src="../node_modules/angular-animate/angular-animate.js"></script>
+    <script src="../node_modules/angular-aria/angular-aria.js"></script>
+    <script src="../node_modules/angular-material/angular-material.js"></script>
+    <script src="../node_modules/angular-material-icons/angular-material-icons.js"></script>
+
+
+    <script src="./app.js"></script>
+
+</head>
+<body ng-app="myApp" ng-controller="indexCtrl as ctrl">
+
+<div layout="column">
+
+    <!--Header toolbar-->
+
+    <md-toolbar class="md-toolbar-tools" layout="row" layout-align="center center">
+
+        <h2>
+            Material ToDo App
+        </h2>
+    </md-toolbar>
+
+
+    <!--Body-->
+
+        <div layout="row" layout-align="center center">
+            <div flex-gt-sm="50">
+
+                <form ng-submit="ctrl.addTodo()" layout="row" >
+                    <md-input-container flex>
+                        <label>Add todo item</label>
+                        <input name="todo" ng-model="ctrl.todoItem" required>
+                    </md-input-container>
+
+                    <md-button class="md-fab" aria-label="Add todo" ng-click="ctrl.addTodo()">
+                        <ng-md-icon icon="add" style="fill: white" size="30" layout="row" layout-align="center center"></ng-md-icon>
+                    </md-button>
+                </form>
+
+                <div layout="column" layout-align="center end">
+                    <p>{{ctrl.allTodo.length-ctrl.counter}} of {{ctrl.allTodo.length}} remaining [<a ng-click="ctrl.archive()" href="">Archive</a>]</p>
+                </div>
+
+                <div layout="column" layout-margin>
+                    <md-checkbox ng-repeat="ab in ctrl.allTodo" aria-label="Checkbox 1" ng-model="ab.check" ng-click="ctrl.selectedArchives($index)">
+                        {{ab.todo}}
+                    </md-checkbox>
+                </div>
+
+            </div>
+        </div>
+
+
+
+</div>
+
+</body>
+</html>
