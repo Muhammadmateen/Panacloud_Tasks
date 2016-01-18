@@ -1,0 +1,59 @@
+
+
+<form name="reg" ng-submit="ctrl.signUp()" layout="column" layout-align="center center" >
+    <h2>Sign UP</h2>
+
+    <div layout="row" layout-align="start start">
+        <md-input-container class="md-icon-float md-block" style="width: 200px">
+            <label>First Name</label>
+            <input type="text" name="fName" ng-model="ctrl.fName" required/>
+        </md-input-container>
+
+
+        <md-input-container class="md-icon-float md-block" style="width: 200px;margin-left: 15px">
+            <label>Last Name</label>
+            <input type="text" name="lName" ng-model="ctrl.lName" required/>
+        </md-input-container>
+
+    </div>
+
+    <div layout="row">
+        <span style="color: red" ng-show="reg.fName.$invalid && reg.fName.$dirty">
+                        <span ng-show="reg.fName.$error.required">First Name is required</span>
+        </span>
+            <span style="color: red;padding-left: 40px" ng-show="reg.lName.$invalid && reg.lName.$dirty">
+                        <span ng-show="reg.lName.$error.required">Last Name is required</span>
+            </span>
+    </div>
+
+
+
+
+    <md-input-container style="width: 400px">
+        <label>Email address</label>
+        <input type="email" name="email" ng-model="ctrl.email" required/>
+    </md-input-container>
+                <span style="color: red" ng-show="reg.email.$invalid && reg.email.$dirty">
+                        <span ng-show="reg.email.$error.required">Email is required</span>
+                        <span ng-show="reg.email.$error.email">Invalid email address</span>
+                </span><br>
+
+
+
+    <md-input-container style="width: 400px">
+        <label>Password</label>
+        <input type="password" name="password" ng-model="ctrl.pass" required/>
+    </md-input-container>
+                <span style="color: red" ng-show="reg.password.$invalid && reg.password.$dirty">
+                        <span ng-show="reg.password.$error.required">Password is required</span>
+                </span><br>
+
+
+
+
+    <md-button class="md-raised md-primary" ng-click="ctrl.signUp()" ng-disabled="reg.$invalid" style="width: 12%">Submit</md-button>
+        <span ng-show="ctrl.loader">
+            <md-progress-circular class="md-hue-2" md-mode="indeterminate" md-diameter="40px"></md-progress-circular>
+            Wait...
+        </span>
+</form>

@@ -1,0 +1,139 @@
+
+<div>
+
+
+
+    <md-sidenav class="md-sidenav-left md-whiteframe-z2 sidenav_back_color" md-component-id="left">
+
+        <div class="backgroundImage">
+
+            <div class="profilePic" layout="row" layout-align="start center" layout-padding>
+
+                <img ng-src="{{ctrl.details.profilePic}}" alt="Profile Picture">
+                <span class="txt_color">{{ctrl.details.firstName}} {{ctrl.details.lastName}}</span>
+            </div>
+
+        </div>
+
+
+        <md-list>
+            <md-list-item>
+                <md-button aria-label="dashboard" class="md-primary">
+                    <ng-md-icon icon="dashboard"></ng-md-icon>
+                    <span class="txt_color">Dashboard</span>
+                </md-button>
+            </md-list-item>
+
+            <md-list-item>
+                <md-button aria-label="logout" class="md-primary" ng-click="ctrl.logout()">
+                    <ng-md-icon icon="logout"></ng-md-icon>
+                    <span class="txt_color">Logout</span>
+                </md-button>
+            </md-list-item>
+        </md-list>
+
+    </md-sidenav>
+
+
+    <div layout="column" >
+
+        <div class="toolbar_backimg">
+
+            <md-button aria-label="Menu" ng-click="ctrl.toggleLeft()" class="md-icon-button">
+                <ng-md-icon icon="menu" style="fill:white" layout="row" layout-align="center center"></ng-md-icon>
+            </md-button>
+
+            <div class="dashboard_Pic" layout="row" layout-align="start center" layout-padding>
+
+                <img ng-src="{{ctrl.details.profilePic}}" alt="Profile Picture">
+                <span class="txt_color">{{ctrl.details.firstName}} {{ctrl.details.lastName}}</span>
+            </div>
+
+        </div>
+
+
+
+                <div layout="row">
+
+                    <span class="remain_task" flex="50" layout="column" layout-align="center center">
+
+                          <span class="numbertasks txt_color">{{ctrl.todo.length}}</span>
+                          <span class="txt_color">Remaining Tasks</span>
+
+                    </span>
+
+                    <span class="complete_task" flex="50"  layout="column" layout-align="center center">
+
+                        <span class="numbertasks txt_color">{{ctrl.details.completedTasks}}</span>
+                        <span class="txt_color">Complete Taks</span>
+
+                    </span>
+                </div>
+
+        <div layout="row" layout-align="center center" hide-xs hide-sm show-gt-sm>
+            <md-button class="md-fab middleButton_gt_sm" aria-label="Add Todo" ng-click="ctrl.showDialog()">
+                <ng-md-icon icon="add" size="30" layout="row" layout-align="center center"></ng-md-icon>
+            </md-button>
+        </div>
+
+        <div layout="row" layout-align="center center" hide show-sm>
+            <md-button class="md-fab middleButton_sm" aria-label="Add Todo" ng-click="ctrl.showDialog()">
+                <ng-md-icon icon="add" size="30" layout="row" layout-align="center center"></ng-md-icon>
+            </md-button>
+        </div>
+
+        <div layout="row" layout-align="center center" show-xs hide-sm hide-gt-xs>
+            <md-button class="md-fab middleButton_xs" aria-label="Add Todo" ng-click="ctrl.showDialog()">
+                <ng-md-icon icon="add" size="30" layout="row" layout-align="center center"></ng-md-icon>
+            </md-button>
+        </div>
+
+    </div>
+
+
+    <div layout-margin layout="column" layout-align="center start">
+
+        <p>Today</p>
+        <div ng-repeat="aa in ctrl.todo" layout="row" layout-padding>
+
+           <!-- <img src="./pics/todo.png" alt="Todo item">-->
+            <span ng-if="$first && !$last"><img src="./pics/first.png"></span>
+            <span ng-if="$odd && !$first && !$last"><img src="./pics/odd.png"></span>
+            <span ng-if="$even && !$first && !$last"><img src="./pics/even.png"></span>
+            <span ng-if="$last && !$first"><img src="./pics/last.png"></span>
+
+
+            <b layout-margin>{{aa.name}}</b>
+            <md-menu>
+                <md-button aria-label="Open phone interactions menu" class="md-icon-button" ng-click="ctrl.openMenu($mdOpenMenu, $event)">
+                    <ng-md-icon icon="expand_more" size="30"></ng-md-icon>
+                </md-button>
+                <md-menu-content width="1">
+                    <md-menu-item>
+                        <md-button ng-click="ctrl.deleteTodo($index)">
+                            <ng-md-icon icon="delete" size="30"></ng-md-icon>
+                            Delete
+                        </md-button>
+                    </md-menu-item>
+                </md-menu-content>
+            </md-menu>
+
+        </div>
+    </div>
+
+    <hr>
+
+
+    <input type="file" id="fileInput">
+
+
+
+
+
+
+
+
+
+
+
+</div>

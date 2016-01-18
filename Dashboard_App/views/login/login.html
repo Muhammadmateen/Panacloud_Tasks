@@ -1,0 +1,47 @@
+
+
+<form name="loginForm" ng-submit="ctrl.login(ctrl.email,ctrl.pass)">
+
+
+    <div layout="column" layout-align="center center" style="padding-top:100px">
+
+        <h2>Quiz App Login</h2>
+
+        <md-input-container style="width: 35%">
+            <label>Email address</label>
+            <input type="email" name="email" ng-model="ctrl.email" required/>
+        </md-input-container>
+
+
+        <span style="color: red" ng-show="loginForm.email.$invalid && loginForm.email.$dirty">
+                        <span ng-show="loginForm.email.$error.required">Email is required</span>
+                        <span ng-show="loginForm.email.$error.email">Invalid email address</span>
+        </span>
+        <br>
+
+
+        <md-input-container style="width: 35%">
+            <label>Password</label>
+            <input type="password" name="pass" ng-model="ctrl.pass" required/>
+        </md-input-container>
+
+
+        <span style="color: red" ng-show="loginForm.pass.$invalid && loginForm.pass.$dirty">
+                        <span ng-show="loginForm.pass.$error.required">Password is required</span>
+        </span>
+
+
+        <br><br>
+
+
+        <md-button class="md-raised md-primary" ng-click="ctrl.login(ctrl.email,ctrl.pass)" ng-disabled="loginForm.$invalid" style="width: 35%">Sign In</md-button>
+        <!--<md-button class="md-raised md-primary" ui-sref="registration" style="width: 35%">Registration</md-button>-->
+        <a ui-sref="signup">Registration</a>
+        <a ui-sref="forgotpassword">Forgot Password?</a>
+        <br>
+        <span ng-show="ctrl.loader">
+        <md-progress-circular class="md-hue-2" md-mode="indeterminate" md-diameter="40px"></md-progress-circular>
+            Wait...
+        </span>
+    </div>
+</form>
