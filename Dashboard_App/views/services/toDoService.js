@@ -1,6 +1,7 @@
-/**
+/*
+/!**
  * Created by Mateen Bhai on 1/15/2016.
- */
+ *!/
 
 
 angular.module("appModule")
@@ -9,18 +10,19 @@ angular.module("appModule")
     {
 
 
-        var data = {};
-        var uid = localStorage.getItem("uid");
+            var data = {};
 
-        var user_details_ref = new Firebase(firebaseUrl+uid+"/user_details");
-        var user_todo_ref = new Firebase(firebaseUrl+uid+"/todos");
-        data.user_details = $firebaseObject(user_details_ref);
-        data.user_todos = $firebaseArray(user_todo_ref);
+
+
+
 
 
         //Add todo in firebase
         data.addTodo = function(a)
         {
+            var uid = localStorage.getItem("uid");
+            var user_todo_ref = new Firebase(firebaseUrl+uid+"/todos");
+
             var abc = user_todo_ref.push(
             {
                 name:a
@@ -29,46 +31,43 @@ angular.module("appModule")
 
 
 
-
         //Delete todo from firebase
-        data.deleteTodo = function(a)
+        /!*data.deleteTodo = function(a)
         {
             data.user_todos.$remove(a);
-            /*console.log(data.user_details.completedTasks);*/
             user_details_ref.update(
                 {
                     completedTasks:++data.user_details.completedTasks
                 })
 
-        }
+        }*!/
 
 
 
 
-        data.saveImag = function(a)
+        /!*data.saveImag = function(a)
         {
             user_details_ref.update({
                 profilePic:a
             })
 
+        }*!/
 
 
 
-        }
 
 
-
-        /*for(var x in data.todoList[3]) {
+        /!*for(var x in data.todoList[3]) {
          if(x.indexOf('$') == -1){
          console.log(x);
          console.log(data.todoList[3][x].name);
          }
 
-         }*/
+         }*!/
 
 
 
 
         return data;
 
-    })
+    })*/

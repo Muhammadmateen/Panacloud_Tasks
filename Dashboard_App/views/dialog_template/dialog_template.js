@@ -5,18 +5,22 @@
 
 angular.module("appModule")
 
-    .controller("todo_dialog_ctrl",function(firebaseUrl,$firebaseArray,todoService,$mdDialog)
+    .controller("todo_dialog_ctrl",function(firebaseUrl,$mdDialog)
     {
         var _self = this;
 
-
-
-
         _self.addTodo = function(a)
         {
-            todoService.addTodo(a);
-            _self.todo = "";
+            var uid = localStorage.getItem("uid");
+            var user_todo_ref = new Firebase(firebaseUrl+uid+"/todos");
+
+            var abc = user_todo_ref.push(
+                {
+                    name:a
+                });
+
             $mdDialog.hide();
+
         }
 
 

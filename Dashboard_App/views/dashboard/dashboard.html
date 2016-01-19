@@ -1,5 +1,5 @@
 
-<div>
+<div ng-show="!ctrl.loader">
 
 
 
@@ -9,8 +9,8 @@
 
             <div class="profilePic" layout="row" layout-align="start center" layout-padding>
 
-                <img ng-src="{{ctrl.details.profilePic}}" alt="Profile Picture">
-                <span class="txt_color">{{ctrl.details.firstName}} {{ctrl.details.lastName}}</span>
+                <img class="hidesquarebox" ng-src="{{ctrl.user_details.profilePic}}" alt="Profile Picture" ng-click="ctrl.pictureDialog()">
+                <span class="txt_color">{{ctrl.user_details.firstName}} {{ctrl.user_details.lastName}}</span>
             </div>
 
         </div>
@@ -45,8 +45,8 @@
 
             <div class="dashboard_Pic" layout="row" layout-align="start center" layout-padding>
 
-                <img ng-src="{{ctrl.details.profilePic}}" alt="Profile Picture">
-                <span class="txt_color">{{ctrl.details.firstName}} {{ctrl.details.lastName}}</span>
+                <img class="hidesquarebox" ng-src="{{ctrl.user_details.profilePic}}" alt="Profile Picture" ng-click="ctrl.pictureDialog()">
+                <span class="txt_color">{{ctrl.user_details.firstName}} {{ctrl.user_details.lastName}}</span>
             </div>
 
         </div>
@@ -57,14 +57,14 @@
 
                     <span class="remain_task" flex="50" layout="column" layout-align="center center">
 
-                          <span class="numbertasks txt_color">{{ctrl.todo.length}}</span>
+                          <span class="numbertasks txt_color">{{ctrl.user_todos.length}}</span>
                           <span class="txt_color">Remaining Tasks</span>
 
                     </span>
 
                     <span class="complete_task" flex="50"  layout="column" layout-align="center center">
 
-                        <span class="numbertasks txt_color">{{ctrl.details.completedTasks}}</span>
+                        <span class="numbertasks txt_color">{{ctrl.user_details.completedTasks}}</span>
                         <span class="txt_color">Complete Taks</span>
 
                     </span>
@@ -94,7 +94,7 @@
     <div layout-margin layout="column" layout-align="center start">
 
         <p>Today</p>
-        <div ng-repeat="aa in ctrl.todo" layout="row" layout-padding>
+        <div ng-repeat="aa in ctrl.user_todos" layout="row" layout-padding>
 
            <!-- <img src="./pics/todo.png" alt="Todo item">-->
             <span ng-if="$first && !$last"><img src="./pics/first.png"></span>
@@ -121,19 +121,14 @@
         </div>
     </div>
 
-    <hr>
 
 
-    <input type="file" id="fileInput">
+</div>
 
 
+<div ng-show="ctrl.loader">
 
-
-
-
-
-
-
-
+    <md-progress-circular class="md-hue-2" md-mode="indeterminate" md-diameter="200px"></md-progress-circular>
+    Wait...
 
 </div>

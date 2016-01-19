@@ -5,7 +5,7 @@
 
 (function()
 {
-    var app = angular.module("appModule",['ngMaterial','ngMdIcons','ui.router','firebase'])
+    var app = angular.module("appModule",['ngMaterial','ngMdIcons','ui.router','firebase','angular-img-cropper'])
 
     app.config(states_config_func);
 

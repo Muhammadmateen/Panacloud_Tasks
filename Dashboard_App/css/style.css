@@ -79,3 +79,8 @@ md-sidenav
 {
     margin-top: -54%;
 }
+
+.hidesquarebox
+{
+    outline: none;
+}

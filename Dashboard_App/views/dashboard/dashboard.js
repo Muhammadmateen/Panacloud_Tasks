@@ -4,12 +4,29 @@
 
 angular.module("appModule")
 
-    .controller('dashboard_controller', function ($scope,$timeout, $mdSidenav, $log, $mdDialog,todoService,$document,redirect) {
+    .controller('dashboard_controller', function ($scope,$timeout, $mdSidenav,$mdDialog,$document,redirect,firebaseUrl,$firebaseObject,$firebaseArray) {
 
         var _self = this;
 
        /* var localData = JSON.parse(localStorage.getItem('firebase:session::todo-task'));*/
+
+        _self.loader = true;
+
         var uid = localStorage.getItem("uid");
+        var user_details_ref = new Firebase(firebaseUrl+uid+"/user_details");
+        var user_todo_ref = new Firebase(firebaseUrl+uid+"/todos");
+        _self.user_details = $firebaseObject(user_details_ref);
+        _self.user_todos = $firebaseArray(user_todo_ref);
+
+
+        _self.user_details.$loaded().then(function()
+        {
+            _self.user_todos.$loaded().then(function()
+            {
+                _self.loader = false;
+            })
+        })
+
 
 
 
@@ -23,6 +40,9 @@ angular.module("appModule")
             }
 
         });
+
+
+
 
         this.toggleLeft = buildDelayedToggler('left');
 
@@ -77,25 +97,57 @@ angular.module("appModule")
             })
         };
 
+        _self.pictureDialog = function(ev)
+        {
+            $mdDialog.show({
+
+                controller: 'pic_dialog_ctrl',
+                controllerAs: 'ctrl',
+                templateUrl: './views/pic_dialog_template/pic_dialog_template.html',
+                parent: angular.element(document.body),
+                targetEvent: ev,
+                clickOutsideToClose:true
+            })
+        }
 
 
-        _self.todo = todoService.user_todos;
-        _self.details = todoService.user_details;
 
 
+
+
+
+
+
+
+        //deleted todo function
         _self.deleteTodo = function(a)
         {
-            todoService.deleteTodo(a);
+
+            _self.user_todos.$remove(a);
+            user_details_ref.update(
+                {
+                    completedTasks:++_self.user_details.completedTasks
+                })
 
         }
 
+
+
+
+
+        //logout function
         _self.logout = function()
         {
-            //localStorage.removeItem(uid);
+            localStorage.removeItem("uid");
+            redirect.redirectCurrent();
         }
 
 
 
+
+
+
+        //Expand more logo appearance
         _self.openMenu = function($mdOpenMenu, ev) {
             originatorEv = ev;
             $mdOpenMenu(ev);
@@ -104,11 +156,17 @@ angular.module("appModule")
 
 
 
-        var fileInput = document.getElementById('fileInput');
+
+
+
+
+
+        //for picture clcik event
+        /*var fileInput = document.getElementById('fileInput');
 
         fileInput.addEventListener('change', function(e) {
             var file = fileInput.files[0];
-            var imageType = /image.*/;
+            var imageType = /image.*!/;
 
             if (file.type.match(imageType)) {
                 var reader = new FileReader();
@@ -118,8 +176,10 @@ angular.module("appModule")
 
                     _self.picture1 = reader.result;
 
-                    todoService.saveImag(_self.picture1);
-                    console.log(_self.picture1);
+                    user_details_ref.update({
+                        profilePic:_self.picture1
+                    })
+
 
                 }
 
@@ -128,7 +188,7 @@ angular.module("appModule")
                 console.log("File not supported");
             }
 
-        });
+        });*/
 
 
 
