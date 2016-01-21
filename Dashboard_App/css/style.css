@@ -1,14 +1,14 @@
 
 
-md-sidenav
-{
-    overflow: hidden;
+.backgroundImage{
+    background-image: url("../pics/ToggleHeader.png");
+    background-size: 100% 100%;
 }
 
-.backgroundImage{
-    height: 190px;
-    width: 320px;
-    background-image: url("../pics/ToggleHeader.png");
+.toolbar_backimg{
+
+    background-image: url("../pics/top-bg.png");
+    background-size: 100% 100%;
 }
 
 .profilePic{
@@ -29,29 +29,20 @@ md-sidenav
     height: 112px;
 }
 
-.toolbar_backimg{
-
-    background-image: url("../pics/top-bg.png");
-    background-size: 100% 100%;
-}
-
-.numbertasks
-{
-    font-size: 45px;
-}
 
 .remain_task
 {
     background-color: #4DC2FF;
-    height: 100%;
-    padding: 3% 0 3% 0;
+    padding-top: 25px;
+    padding-bottom: 25px;
+
 }
 
 .complete_task
 {
     background-color: #FF7FE5;
-    height: 100%;
-    padding: 3% 0 3% 0;
+    padding-top: 25px;
+    padding-bottom: 25px;
 }
 
 .sidenav_back_color
@@ -64,32 +55,11 @@ md-sidenav
     color: white;
 }
 
-.middleButton_gt_sm
-{
-    margin-top: -20%;
-}
-
-.middleButton_sm
-{
-
-    margin-top: -30%;
-}
-
-.middleButton_xs
-{
-    margin-top: -54%;
-}
-
 .hidesquarebox
 {
     outline: none;
 }
 
-.round{
-    width: 100px;
-    height: 100px;
-    background-color: white;
-    border-radius: 50%;
-    margin-top: -200px;
-    outline: none;
+.set_btn_align{
+    margin-top: -150px;
 }

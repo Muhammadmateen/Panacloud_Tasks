@@ -8,7 +8,6 @@ angular.module("appModule")
 
         var _self = this;
 
-       /* var localData = JSON.parse(localStorage.getItem('firebase:session::todo-task'));*/
 
         _self.loader = true;
 

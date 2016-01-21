@@ -1,15 +1,15 @@
 
 
 <div ng-controller="todo_dialog_ctrl">
+
+    <form name="todo_form">
     <md-input-container>
-        <input type="text" ng-model="ctrl.todo">
+        <input type="text" name="todo_form.todo" ng-model="ctrl.todo" aria-label="Add Todo" required>
     </md-input-container>
 
-    <md-button ng-click="ctrl.addTodo(ctrl.todo)" aria-label="Add ToDo">
+    <md-button class="md-primary md-raised" ng-disabled="todo_form.$invalid" ng-click="ctrl.addTodo(ctrl.todo)" aria-label="Add ToDo">
         Add to Do
     </md-button>
-
-
-
+    </form>
 
 </div>
