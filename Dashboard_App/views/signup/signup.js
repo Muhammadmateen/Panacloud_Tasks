@@ -43,7 +43,7 @@ angular.module("appModule")
                                     {
                                         _self.loader = false;
                                         redirect.alertDialog("Successful","Successfully created user account");
-                                        redirect.redirectCurrent();
+                                        redirect.redirectCall("login");
                                     }
 
                                 });

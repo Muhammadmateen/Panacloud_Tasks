@@ -70,7 +70,7 @@
                     </span>
                 </div>
 
-        <div layout="row" layout-align="center center" hide-xs hide-sm show-gt-sm>
+        <!--<div layout="row" layout-align="center center" hide-xs hide-sm show-gt-sm>
             <md-button class="md-fab middleButton_gt_sm" aria-label="Add Todo" ng-click="ctrl.showDialog()">
                 <ng-md-icon icon="add" size="30" layout="row" layout-align="center center"></ng-md-icon>
             </md-button>
@@ -86,9 +86,16 @@
             <md-button class="md-fab middleButton_xs" aria-label="Add Todo" ng-click="ctrl.showDialog()">
                 <ng-md-icon icon="add" size="30" layout="row" layout-align="center center"></ng-md-icon>
             </md-button>
-        </div>
+        </div>-->
+
+
 
     </div>
+
+    <div  layout="row" layout-align="center start">
+        <span class="round" ng-click="showAdvanced1($event)"  layout="row" layout-align="center center"><ng-md-icon icon="add" size="40" class="fillColor"></ng-md-icon></span>
+    </div>
+
 
 
     <div layout-margin layout="column" layout-align="center start">
@@ -126,9 +133,9 @@
 </div>
 
 
-<div ng-show="ctrl.loader">
+<div ng-show="ctrl.loader" layout="row" layout-align="center center">
 
     <md-progress-circular class="md-hue-2" md-mode="indeterminate" md-diameter="200px"></md-progress-circular>
-    Wait...
+    Loading Profile...
 
 </div>

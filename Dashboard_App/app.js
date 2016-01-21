@@ -22,7 +22,7 @@
                 controllerAs:'ctrl'
             })
 
-        $stateProvider.state("login",
+            .state("login",
             {
                 url:'/login',
                 templateUrl:'views/login/login.html',
@@ -30,13 +30,17 @@
                 controllerAs:'ctrl'
             })
 
-        $stateProvider.state("signup",
+
+            .state("signup",
             {
                 url:'/signup',
                 templateUrl:'views/signup/signup.html',
                 controller:'signup_controller',
                 controllerAs:'ctrl'
             })
+
+
+
 
 
 

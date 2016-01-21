@@ -5,7 +5,7 @@
 
     <div layout="column" layout-align="center center" style="padding-top:100px">
 
-        <h2>Quiz App Login</h2>
+        <h2>Login</h2>
 
         <md-input-container style="width: 35%">
             <label>Email address</label>
@@ -37,7 +37,6 @@
         <md-button class="md-raised md-primary" ng-click="ctrl.login(ctrl.email,ctrl.pass)" ng-disabled="loginForm.$invalid" style="width: 35%">Sign In</md-button>
         <!--<md-button class="md-raised md-primary" ui-sref="registration" style="width: 35%">Registration</md-button>-->
         <a ui-sref="signup">Registration</a>
-        <a ui-sref="forgotpassword">Forgot Password?</a>
         <br>
         <span ng-show="ctrl.loader">
         <md-progress-circular class="md-hue-2" md-mode="indeterminate" md-diameter="40px"></md-progress-circular>
